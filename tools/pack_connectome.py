@@ -97,7 +97,7 @@ def pack(source, destination):
         "dataset": "FlyWire FAFB v783",
         "citation": "Dorkenwald et al., Nature 634, 124-138 (2024)",
         "paper": "https://doi.org/10.1038/s41586-024-07558-y",
-        "code_license": "MIT; see LICENSE for the preserved upstream notice",
+        "code_license": "GPL-3.0-only; see LICENSE and THIRD_PARTY_NOTICES for the upstream MIT notice",
         "format": {
             "compression": "gzip",
             "endianness": "little",

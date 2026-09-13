@@ -1,6 +1,9 @@
 # nFly
 
-[![Build and Release](https://github.com/Ziyang-Bai/nFly/actions/workflows/build.yml/badge.svg)](https://github.com/Ziyang-Bai/nFly/actions/workflows/build.yml)Ti
+简体中文 | [English](README.en.md)
+
+[![Build and Release](https://github.com/Ziyang-Bai/nFly/actions/workflows/build.yml/badge.svg)](https://github.com/Ziyang-Bai/nFly/actions/workflows/build.yml)
+
 TI-Nspire CX 上运行的果蝇大脑神经网络模拟器
 TI-Nspire CX / CX II 的 Ndless 原生果蝇神经网络模拟程序，移植自 [FlyBrain](https://github.com/snedea/flybrain)。
 
@@ -21,14 +24,15 @@ TI-Nspire CX / CX II 的 Ndless 原生果蝇神经网络模拟程序，移植自
 - `nFly.tns`：程序。
 - `connectome.tns`：程序读取的连接组数据。
 - `connectome.json`：来源、格式、模拟参数和校验值。
-- `LICENSE`：许可证。
+- `LICENSE`：GNU GPLv3 许可证。
+- `THIRD_PARTY_NOTICES`：上游版权声明与 MIT 许可文本。
 
 解压后按以下顺序传输：
 1. 在计算器中新建文件夹，例如 `nFly`。
 2. 先传入 `connectome.tns`，再传入 `nFly.tns`，两者保持在同一文件夹。
 3. 从“我的文档”打开 **`nFly.tns`**，等待数据加载。不要打开 `connectome.tns`。
 
-`connectome.json` 和 `LICENSE` 可保留在电脑上供查阅，无需传入计算器。
+`connectome.json`、`LICENSE` 和 `THIRD_PARTY_NOTICES` 可保留在电脑上供查阅，无需传入计算器。
 
 ## 操作
 
@@ -67,6 +71,7 @@ dist/nFly.tns
 dist/connectome.tns
 dist/connectome.json
 dist/LICENSE
+dist/THIRD_PARTY_NOTICES
 dist/nFly.zip
 ```
 
@@ -109,7 +114,7 @@ fbf8d440ca1207c7573e1acdd2366f9d0beb9b533c1710f21681264f81b1cc49
 
 ## 来源和许可证
 
-nFly 代码使用 [GNU 通用公共许可证 v3.0](LICENSE) 。
+nFly 代码使用 [GNU 通用公共许可证 v3.0](LICENSE)（GPL-3.0-only）。FlyBrain 的原始 MIT 版权与许可声明保留在 [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES) 中。
 
 连接组来源为 **FlyWire FAFB v783**，通过 FlyBrain 数据文件取得。数据的使用和引用要求请参阅 [FlyWire](https://flywire.ai/) 及以下论文：
 

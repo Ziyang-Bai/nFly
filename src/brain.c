@@ -1,4 +1,4 @@
-/* Native port of FlyBrain sim-worker.js; upstream MIT notice in LICENSE. */
+/* Native port of FlyBrain sim-worker.js; upstream MIT notice in THIRD_PARTY_NOTICES. */
 #include "brain.h"
 #include <math.h>
 #include <stdio.h>

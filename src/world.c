@@ -1,4 +1,4 @@
-/* FlyBrain bridge, drive and movement model; upstream MIT notice in LICENSE. */
+/* FlyBrain bridge, drive and movement model; upstream MIT notice in THIRD_PARTY_NOTICES. */
 #include "world.h"
 #include <math.h>
 #include <string.h>

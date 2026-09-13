@@ -12,7 +12,7 @@ SOURCES := src/main.c src/render.c src/brain.c src/world.c src/groups.c
 OBJECTS := $(SOURCES:src/%.c=build/%.o)
 
 .PHONY: all app data release help clean check
-all: app data dist/LICENSE
+all: app data dist/LICENSE dist/THIRD_PARTY_NOTICES
 app: dist/nFly.tns
 data: dist/connectome.tns dist/connectome.json
 release: dist/nFly.zip
@@ -48,7 +48,10 @@ dist/connectome.tns dist/connectome.json &: tools/pack_connectome.py | dist
 dist/LICENSE: LICENSE | dist
 	cp $< $@
 
-dist/nFly.zip: dist/nFly.tns dist/connectome.tns dist/connectome.json dist/LICENSE
+dist/THIRD_PARTY_NOTICES: THIRD_PARTY_NOTICES | dist
+	cp $< $@
+
+dist/nFly.zip: dist/nFly.tns dist/connectome.tns dist/connectome.json dist/LICENSE dist/THIRD_PARTY_NOTICES
 	$(PYTHON) -m zipfile -c $@ $^
 
 build/test_brain: tests/test_brain.c src/brain.c src/brain.h src/groups.h | build

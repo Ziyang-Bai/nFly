@@ -30,7 +30,7 @@ jobs:
       - name: Build calculator packages
         run: |
           make -j2 all release
-          for file in nFly.tns connectome.tns connectome.json LICENSE nFly.zip; do
+          for file in nFly.tns connectome.tns connectome.json LICENSE THIRD_PARTY_NOTICES nFly.zip; do
             test -s "dist/$file"
           done
 
@@ -43,6 +43,7 @@ jobs:
             dist/connectome.tns
             dist/connectome.json
             dist/LICENSE
+            dist/THIRD_PARTY_NOTICES
             dist/nFly.zip
           if-no-files-found: error
           retention-days: 14
@@ -69,6 +70,7 @@ jobs:
             dist/connectome.tns
             dist/connectome.json
             dist/LICENSE
+            dist/THIRD_PARTY_NOTICES
             dist/nFly.zip
           fail_on_unmatched_files: true
           generate_release_notes: true
