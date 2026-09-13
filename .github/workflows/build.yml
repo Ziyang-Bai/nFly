@@ -1,0 +1,74 @@
+name: Build and Release
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref_type != 'tag' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Ndless
+        uses: Ziyang-Bai/setup-ndless@v1
+
+      - name: Run host tests
+        run: make check
+
+      - name: Build calculator packages
+        run: |
+          make -j2 all release
+          for file in nFly.tns connectome.tns connectome.json LICENSE nFly.zip; do
+            test -s "dist/$file"
+          done
+
+      - name: Upload calculator packages
+        uses: actions/upload-artifact@v7
+        with:
+          name: nFly
+          path: |
+            dist/nFly.tns
+            dist/connectome.tns
+            dist/connectome.json
+            dist/LICENSE
+            dist/nFly.zip
+          if-no-files-found: error
+          retention-days: 14
+
+  release:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Download calculator packages
+        uses: actions/download-artifact@v7
+        with:
+          name: nFly
+          path: dist
+
+      - name: Publish tagged release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/nFly.tns
+            dist/connectome.tns
+            dist/connectome.json
+            dist/LICENSE
+            dist/nFly.zip
+          fail_on_unmatched_files: true
+          generate_release_notes: true
